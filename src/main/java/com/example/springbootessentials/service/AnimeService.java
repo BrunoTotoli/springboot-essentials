@@ -44,4 +44,8 @@ public class AnimeService {
                 .build();
         animeRepository.save(anime);
     }
+    public List<Anime> findByName(String name) {
+        return animeRepository.findByName(name);
+    }
+
 }
