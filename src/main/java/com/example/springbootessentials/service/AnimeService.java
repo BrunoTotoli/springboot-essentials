@@ -1,6 +1,7 @@
 package com.example.springbootessentials.service;
 
 import com.example.springbootessentials.domain.Anime;
+import com.example.springbootessentials.exception.BadRequestException;
 import com.example.springbootessentials.repository.AnimeRepository;
 import com.example.springbootessentials.requests.AnimePostRequestBody;
 import com.example.springbootessentials.requests.AnimePutRequestBody;
@@ -24,7 +25,7 @@ public class AnimeService {
 
     public Anime findByIdOrThrowBadRequestException(long id) {
         return animeRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Anime not found"));
+                .orElseThrow(() -> new BadRequestException("Anime not found"));
 
     }
 
@@ -44,6 +45,7 @@ public class AnimeService {
                 .build();
         animeRepository.save(anime);
     }
+
     public List<Anime> findByName(String name) {
         return animeRepository.findByName(name);
     }

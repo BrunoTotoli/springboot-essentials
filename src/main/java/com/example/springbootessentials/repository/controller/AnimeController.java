@@ -1,4 +1,4 @@
-package com.example.springbootessentials.controller;
+package com.example.springbootessentials.repository.controller;
 
 
 import com.example.springbootessentials.domain.Anime;
