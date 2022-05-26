@@ -28,13 +28,9 @@ public class AnimeService {
 
     }
 
-    @Transactional(rollbackOn = Exception.class)
-    public Anime save(AnimePostRequestBody animePostRequestBody) throws Exception {
-        Anime anime = animeRepository.save(Anime.builder().name(animePostRequestBody.getName()).build());
-        if (true)
-            throw new Exception("bad code");
-
-        return anime;
+    @Transactional
+    public Anime save(AnimePostRequestBody animePostRequestBody) {
+        return animeRepository.save(Anime.builder().name(animePostRequestBody.getName()).build());
     }
 
     public void delete(Long id) {
