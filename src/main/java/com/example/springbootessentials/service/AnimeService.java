@@ -2,13 +2,13 @@ package com.example.springbootessentials.service;
 
 import com.example.springbootessentials.domain.Anime;
 import com.example.springbootessentials.exception.BadRequestException;
+import com.example.springbootessentials.mapper.AnimeMapper;
 import com.example.springbootessentials.repository.AnimeRepository;
 import com.example.springbootessentials.requests.AnimePostRequestBody;
 import com.example.springbootessentials.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -28,9 +28,8 @@ public class AnimeService {
 
     }
 
-    @Transactional
     public Anime save(AnimePostRequestBody animePostRequestBody) {
-        return animeRepository.save(Anime.builder().name(animePostRequestBody.getName()).build());
+        return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
     }
 
     public void delete(Long id) {
@@ -39,10 +38,7 @@ public class AnimeService {
 
     public void replace(AnimePutRequestBody animePutRequestBody) {
         Anime savedAnime = findByIdOrThrowBadRequestException(animePutRequestBody.getId());
-        Anime anime = Anime.builder()
-                .id(savedAnime.getId())
-                .name(animePutRequestBody.getName())
-                .build();
+        Anime anime = AnimeMapper.INSTANCE.toAnime(animePutRequestBody);
         animeRepository.save(anime);
     }
 

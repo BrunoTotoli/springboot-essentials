@@ -1,4 +1,4 @@
-package com.example.springbootessentials.repository.util;
+package com.example.springbootessentials.util;
 
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
-package com.example.springbootessentials.repository.controller;
+package com.example.springbootessentials.controller;
 
 
 import com.example.springbootessentials.domain.Anime;
-import com.example.springbootessentials.repository.util.DateUtil;
+import com.example.springbootessentials.util.DateUtil;
 import com.example.springbootessentials.requests.AnimePostRequestBody;
 import com.example.springbootessentials.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
