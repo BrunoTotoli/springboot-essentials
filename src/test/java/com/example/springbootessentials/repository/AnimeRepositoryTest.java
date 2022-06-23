@@ -22,7 +22,7 @@ class AnimeRepositoryTest {
     @Test
     @DisplayName("Save persists anime when Successful")
     void save_PersistAnime_WhenSuccessful() {
-        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved() ;
+        Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
         Anime savedAnime = this.animeRepository.save(animeToBeSaved);
         Assertions.assertThat(savedAnime).isNotNull();
         Assertions.assertThat(savedAnime.getId()).isNotNull();
@@ -80,7 +80,7 @@ class AnimeRepositoryTest {
     }
 
     @Test
-    @DisplayName("Save throw ConstraintViolationException whe name is empty")
+    @DisplayName("Save throw ConstraintViolationException when name is empty")
     void save_ThrowsConstraintViolationException_WheNameIsEmpty() {
         Anime anime = new Anime();
 //        Assertions.assertThatThrownBy(() -> this.animeRepository.save(anime))
