@@ -21,7 +21,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.validation.ConstraintViolationException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
