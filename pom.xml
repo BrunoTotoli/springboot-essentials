@@ -19,6 +19,11 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.11</version>
+        </dependency>
+        <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
@@ -74,7 +79,7 @@
 
     <profiles>
         <profile>
-        <id>integration-tests</id>
+            <id>integration-tests</id>
             <build>
                 <plugins>
                     <plugin>
