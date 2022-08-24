@@ -16,3 +16,19 @@ logging:
     org:
       hibernate:
         SQL: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+info:
+  application:
+    name: HelloWorld
+    description: A Demo for Spring Boot hello World!
+    author:
+      name: Homer Simpson
+      bio: Nuclear Safety Inspector, Former Technical Supervisor
