@@ -6,7 +6,9 @@ import com.example.springbootessentials.requests.AnimePostRequestBody;
 import com.example.springbootessentials.requests.AnimePutRequestBody;
 import com.example.springbootessentials.service.AnimeService;
 import com.example.springbootessentials.util.DateUtil;
-import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springdoc.api.annotations.ParameterObject;
@@ -31,6 +33,7 @@ public class AnimeController {
     private final AnimeService animeService;
 
     @GetMapping
+    @Operation(summary = "List all animes paginated", description = "The default size is 20, use parameter size to change the default value", tags = {"anime"})
     public ResponseEntity<Page<Anime>> list(@ParameterObject Pageable pageable) {
         log.info(dateUtil.formatLocalDateTimeToDataBaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok().body(animeService.listAll(pageable));
@@ -65,7 +68,10 @@ public class AnimeController {
     public ResponseEntity<Anime> save(@RequestBody @Valid AnimePostRequestBody animePostRequestBody) {
         return new ResponseEntity<>(animeService.save(animePostRequestBody), HttpStatus.CREATED);
     }
-
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204",description = "Successful Operation"),
+            @ApiResponse(responseCode = "400",description = "When Anime Does Not Exist in the database"),
+    })
     @DeleteMapping(path = "admin/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         animeService.delete(id);
